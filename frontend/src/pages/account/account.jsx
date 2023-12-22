@@ -17,7 +17,7 @@ export const Account = () => {
   });
 
   // const url = URL.createObjectURL(new Blob(JSON.parse(x)));
-  // const data = {email: user.email};
+  const data = {email: user.email};
 
   useEffect(() => {
     axios

@@ -26,11 +26,6 @@ authRouter.post('/signup', upload.single('file'), routeHandler(async (request, r
       });
     }
     const {name, email, password, gender, birthdate} = request.body;
-  console.log('name: ', name);
-  console.log('email: ', email);
-  console.log('password: ', password);
-  console.log('gender: ', gender);
-  console.log('birthdate: ', birthdate);
 
     const checkEmail = await User.findOne({
       email: email.toLowerCase(),
@@ -60,7 +55,7 @@ authRouter.post('/signup', upload.single('file'), routeHandler(async (request, r
 
 authRouter.post('/signin', routeHandler(async (request, response) => {
     if (!(request.body.email && request.body.password)) {
-      return response.status(400).json({message: 'Fill all required fields'})
+      throw new WrongInputException();
     }
     const {email, password} = request.body;
     const user = await User.findOne({
@@ -73,5 +68,5 @@ authRouter.post('/signin', routeHandler(async (request, response) => {
       throw new WrongInputException();
     }
 
-    return response.status(200).json(user);
+    return user;
 }));

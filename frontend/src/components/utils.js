@@ -13,9 +13,10 @@ export const createRequestConfig = (data) => {
   Object.keys(data).forEach((key) => {
     if (key !== "file") {
       userData.append(key, data[key]);
-    } else {
-      userData.append('file', data['file'][0]);
     }
+    // else {
+    //   userData.append('file', data['file'][0]);
+    // }
   });
 
   return userData;

@@ -13,9 +13,6 @@ export function responseJsonHandler(error, result, response) {
 export const routeHandler = function (callback) {
   return async (req, res, next) => {
     try {
-      console.log('req: ', req);
-      console.log('res: ', res);
-
       responseJsonHandler(null, await callback(req, res, next), res);
     } catch (err) {
       responseJsonHandler(new Exception(err.message, err.status), null, res);

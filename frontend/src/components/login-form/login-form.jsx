@@ -11,8 +11,6 @@ export const LoginForm = () => {
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
 
-  console.log('user: log: ', user);
-
   const onSubmit = async (data) => {
     try {
       const {name, password, email} = await login(data);
